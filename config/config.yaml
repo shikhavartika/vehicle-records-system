@@ -1,0 +1,28 @@
+# --- Database Configuration ---
+database:
+  type: sqlite
+  path: vehicle_log.db # Path to the database file
+
+# --- Camera Configuration ---
+cameras:
+  - id: video_cam_01           # An ID for this video source
+    source: "D:/project/vehicle-record-system/data/sample_video.mp4"  # *** CHANGE THIS *** to the actual path of your video file.
+                                      # Examples:
+                                      # On Windows: "D:/videos/traffic_footage.avi"
+                                      # On Linux/macOS: "/home/user/videos/traffic_footage.mp4"
+                                      # Relative path: "data/sample_video.mp4" (if video is in a 'data' subfolder)
+    entry_zone: [100, 400, 300, 500] # *** ADJUST THESE *** coordinates based on your VIDEO content!
+    exit_zone: [500, 400, 700, 500]  # *** ADJUST THESE *** coordinates based on your VIDEO content!
+
+# --- Computer Vision Settings ---
+vision:
+  # --- Detection ---
+  detector_model_path: 'models/yolov8n.pt' # Path to your vehicle detection model file.
+  detection_confidence_threshold: 0.4      # Minimum confidence score (0.0 to 1.0).
+
+  # --- License Plate Recognition (LPR) ---
+  lpr_enabled: true                        # Set to true or false based on your recognizer implementation.
+
+# --- Logging Configuration ---
+logging:
+  level: INFO             # Logging level: DEBUG, INFO, WARNING, ERROR, CRITICAL
